@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=750 user-scalable=no" />
+    <title>p-cli</title>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    #wrapper {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        cursor: default;
+        overflow: hidden;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        -o-user-select: none;
+        user-select: none;
+    }
+    #wrapper canvas{
+        background: white;
+        -webkit-transform-origin: left top;
+        -webkit-transform: translateZ(0);
+        -moz-transform-origin: left top;
+        -moz-transform: translateZ(0);
+        -ms-transform-origin: left top;
+        -ms-transform: translateZ(0);
+        -o-transform-origin: left top;
+        -o-transform: translateZ(0);
+        transform-origin: left top;
+        transform: translateZ(0);
+    }
+    </style>
+</head>
+
+<body>
+    <div id="wrapper"></div>
+    <script src="http://libs.baidu.com/jquery/1.9.0/jquery.js"></script>
+    <script src="/src/lib/Pixi/Pixi.min.js"></script>
+    <script src="/dist/build.js"></script>
+</body>
+
+</html>
