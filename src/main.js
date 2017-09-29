@@ -1,32 +1,30 @@
 import loader from './loader.js';
-import { WIDTH, HEIGHT } from './config.js';
 import scroller from './scroll.js';
 import TWEEN from './lib/Tween/Tween.min.js'
+import { WIDTH, HEIGHT, $wrapper } from './config.js';
 import { sprites, cats } from './sprites.config.js';
 
-let isTop = false, // 向上滚动还是向下滚动
-    lastPositionY = 0,
-    $wrapper = $('#wrapper'),
-    {
-        Texture,
-        autoDetectRenderer,
-        CanvasRenderer,
-        Container,
-        Graphics,
-        Sprite,
-        ticker,
-        extras: {
-            AnimatedSprite
-        },
-        utils: {
-            TextureCache
-        },
-        ticker: {
-            Ticker
-        }
-    } = PIXI,
-    tick = new Ticker(),
-    //Create a container object called the `stage`
+let {
+    Texture,
+    autoDetectRenderer,
+    CanvasRenderer,
+    Container,
+    Graphics,
+    Sprite,
+    ticker,
+    extras: {
+        AnimatedSprite
+    },
+    utils: {
+        TextureCache
+    },
+    ticker: {
+        Ticker
+    }
+} = PIXI,
+
+tick = new Ticker(),
+    //Create a container object called the `stage`;
     stage = new Container(),
     catStage = new Container(),
     // Create the renderer
@@ -82,7 +80,7 @@ loader.load((loader, resource) => {
     /*=================background========================*/
     var sprite = new Sprite(TextureCache["img/bg.png"]);
     stage.addChild(sprite);
-    
+
     /*=================方块========================*/
     var rectangle = new Graphics();
     rectangle.beginFill();
@@ -154,14 +152,10 @@ loader.load((loader, resource) => {
     stage.addChild(catStage);
 });
 
-scroller.render = function(left, top, zoom) {
+scroller.render = function(left, top, zoom, direction) {
     renderer.view.setAttribute('y', top);
-    stage.position.set(-left, -top);
-    if (lastPositionY !== top) {
-        isTop = lastPositionY < top;
-    }
-    lastPositionY = top;
-
+    stage.x = -left;
+    stage.y = -top;
     stage.children.forEach(function(item) {
         if (item.animate) {
             var o = Math.sqrt(256e4 - top * top) / 2,

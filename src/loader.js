@@ -2,8 +2,7 @@ let {
     loaders: {
         Loader
     }
-} = PIXI;
-let loader = new Loader();
+} = PIXI, loader = new Loader();
 
 loader.add([
     'img/bg.png',
