@@ -1,23 +1,20 @@
 import Scroller from './lib/Scroller/Scroller.min.js'
 import * as config from './config.js';
 
-
 let $wrapper = $('#wrapper');
-var scroller = new Scroller(render, {
+let WIDTH = 750;
+let HEIGHT = 29360;
+let scroller = new Scroller(render, {
     zooming: !1,
     animating: !0,
     bouncing: !1,
     animationDuration: 1e3
 });
+
 scroller.setDimensions($wrapper.width(), $wrapper.height(), config.WIDTH, config.HEIGHT);
 
 function render() {
-
+    scroller.render && scroller.render.apply(scroller, arguments);
 }
 
-export {
-    scroller
-};
-export {
-    render
-};
+export default scroller;
